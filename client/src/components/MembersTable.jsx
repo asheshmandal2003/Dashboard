@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Table,
   TableBody,
@@ -15,8 +15,8 @@ import {
 } from "@mui/material";
 import Brightness1Icon from "@mui/icons-material/Brightness1";
 
-export const TableComponent = ({ teamName, members, loading }) => {
-  const [page, setPage] = React.useState(0);
+export const TableComponent = ({ teamName, members, loading, isMobile }) => {
+  const [page, setPage] = useState(0);
   const rowsPerPage = 5;
 
   const handleChangePage = (event, newPage) => {
@@ -35,11 +35,28 @@ export const TableComponent = ({ teamName, members, loading }) => {
 
   return (
     <Paper sx={{ mb: 5 }}>
-      <TableContainer>
+      <TableContainer
+        sx={{
+          overflowX: "auto",
+          "&::-webkit-scrollbar": {
+            height: "2px",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "#bdbdbd",
+            borderRadius: "4px",
+          },
+          "&::-webkit-scrollbar-thumb:hover": {
+            backgroundColor: "#4dabf5",
+          },
+          "&::-webkit-scrollbar-track": {
+            backgroundColor: "#eee",
+          },
+        }}
+      >
         <Table>
           <TableHead>
-            <Toolbar>
-              <Typography variant="h6" fontWeight={600}>
+            <Toolbar disableGutters sx={{ pl: 2 }}>
+              <Typography variant={isMobile ? "body1" : "h6"} fontWeight={600}>
                 {teamName}
               </Typography>
             </Toolbar>

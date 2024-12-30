@@ -4,7 +4,7 @@ export const createOrganization = async (req, res) => {
   try {
     const organization = new Organization(req.body);
     await organization.save();
-    res.status(201).json(organization);
+    res.status(201).json({ message: "Organization created successfully" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

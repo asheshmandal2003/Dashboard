@@ -5,6 +5,7 @@ import { TableComponent } from "../components/MembersTable";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNotification } from "../utils/NotificationProvider";
+import { useMediaQuery } from "@mui/material";
 
 export function Members() {
   const location = useLocation();
@@ -12,6 +13,7 @@ export function Members() {
   const [data, setData] = useState(() => null);
   const [loading, setLoading] = useState(() => true);
   const notify = useNotification();
+  const isMobile = useMediaQuery("(max-width:768px)");
 
   useEffect(() => {
     async function fetchTeamWithMembers() {
@@ -49,10 +51,12 @@ export function Members() {
         >
           <ArrowBackRoundedIcon />
         </IconButton>
-        <Typography variant="h4">{`${organization.name} Members`}</Typography>
+        <Typography
+          variant={isMobile ? "h6" : "h4"}
+        >{`${organization.name} Members`}</Typography>
       </Box>
       {data && data.teams.length !== 0 ? (
-        <Typography variant="h6" sx={{ mb: 2 }}>
+        <Typography variant={isMobile ? "body1" : "h6"} sx={{ mb: 2 }}>
           {`Total Teams: ${data.teams.length}`}
         </Typography>
       ) : (
@@ -67,6 +71,7 @@ export function Members() {
             teamName={team.name}
             members={team.members}
             loading={loading}
+            isMobile={isMobile}
           />
         ))}
     </Container>

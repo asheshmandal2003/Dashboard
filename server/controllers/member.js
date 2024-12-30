@@ -23,9 +23,7 @@ export const createMember = async (req, res) => {
     await newMember.save();
     await Team.findByIdAndUpdate(team, { $push: { members: newMember._id } });
 
-    res
-      .status(201)
-      .json({ message: "Member created successfully", member: newMember });
+    res.status(201).json({ message: "Member created successfully" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Failed to create member" });

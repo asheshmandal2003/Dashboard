@@ -10,7 +10,7 @@ const initialValues = {
   teamName: "",
 };
 
-function TeamForm({ organizationId }) {
+function TeamForm({ organizationId, isMobile }) {
   const [loading, setLoading] = useState(() => false);
   const notify = useNotification();
 
@@ -58,14 +58,14 @@ function TeamForm({ organizationId }) {
     >
       {({ values, errors, touched, handleChange, handleBlur }) => (
         <Form aria-disabled={loading}>
-          <Stack spacing={3} mt={3}>
+          <Stack spacing={4} mt={3}>
             <TextField
               autoFocus
               id="teamName"
               name="teamName"
               label="Team Name"
               variant="standard"
-              size="small"
+              size={isMobile ? "small" : "medium"}
               placeholder="Enter team name"
               value={values.teamName}
               onChange={handleChange}
@@ -76,7 +76,7 @@ function TeamForm({ organizationId }) {
             <Button
               variant="contained"
               color="primary"
-              size="small"
+              size={isMobile ? "small" : "medium"}
               startIcon={<AddIcon />}
               type="submit"
               disabled={loading}

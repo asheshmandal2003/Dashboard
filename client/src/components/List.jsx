@@ -8,7 +8,12 @@ import {
 } from "@mui/material";
 import BusinessRoundedIcon from "@mui/icons-material/BusinessRounded";
 
-function List({ closeDrawer, organizations, selectedOrg, setSelectedOrg }) {
+function List({
+  closeDrawer = false,
+  organizations,
+  selectedOrg,
+  setSelectedOrg,
+}) {
   return (
     <ListComponent
       disablePadding

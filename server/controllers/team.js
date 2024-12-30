@@ -16,9 +16,7 @@ export const createTeam = async (req, res) => {
     org.teams.push(newTeam._id);
     await org.save();
 
-    res
-      .status(201)
-      .json({ message: "Team created successfully", team: newTeam });
+    res.status(201).json({ message: "Team created successfully" });
   } catch (error) {
     res.status(500).json({ error: "Failed to create team" });
   }
