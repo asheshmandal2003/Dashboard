@@ -15,7 +15,7 @@
    ```
 
 3. Start the server:
-   Setup the the `.env` file as per the `.example.env` file
+   Setup the the `.env` file as per the `.env.example` file
 
    ```bash
    cd server
@@ -24,7 +24,7 @@
    ```
 
 4. Start the server:
-   Setup the the `.env` file as per the `.example.env` file
+   Setup the the `.env` file as per the `.env.example` file
    ```bash
    yarn
    yarn dev --port 3000
